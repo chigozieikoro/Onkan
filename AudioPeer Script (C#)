@@ -1,0 +1,23 @@
+using UnityEngine;
+using System.Collections;
+
+[RequireComponent (typeof (AudioSource))]
+public class AudioPeer : MonoBehaviour {
+
+  AudioSource as;
+  public static float[] s = new float[4];
+  public static float[] f = new float[4];
+  
+  void Start(){
+    as = GetComponent<AudioSource>();
+  }
+  
+  void Update(){
+    GetSpectrum();
+  }
+  
+  void GetSpectrum(){
+    as.GetSpectrumData(s, 0, FFTWindow.Blackman);
+  }
+
+}
